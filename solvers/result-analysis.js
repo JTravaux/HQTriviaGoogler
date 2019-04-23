@@ -93,8 +93,8 @@ exports.answer = async (question) => {
         headless: true, defaultViewport: null, args: ['--no-sandbox', '--disable-setuid-sandbox', "--proxy-server='direct://'", "--proxy-bypass-list=*"] }).then( async (window)=> {
         console.log(`\x1b[35m${q}\x1b[0m`);
         for (let i = 0; i < answers.length; i++) {
-            await searchBing(`${q} + "${answers[i].text}"`, answers[i].text, window);
-            await searchGoogle(`${q} + "${answers[i].text}"`, answers[i].text, window);
+            searchBing(`${q} + "${answers[i].text}"`, answers[i].text, window);
+            searchGoogle(`${q} + "${answers[i].text}"`, answers[i].text, window);
             console.log();
         }
        
