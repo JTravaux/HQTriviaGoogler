@@ -91,7 +91,9 @@ exports.answer = async (question) => {
     let q = removeStopWords(escapeChars(question.question.toLowerCase()));
     Chromium.launch({ headless: true, defaultViewport: null,  args: ['--no-sandbox', '--disable-setuid-sandbox'] }).then( async (window)=> {
         console.log(`\x1b[35m${q}\x1b[0m`);
-        for (let i = 0; i < answers.length; i++) 
-            searchBing(`${q} + "${answers[i].text}"`, answers[i].text, window).then(() => searchGoogle(`${q} + "${answers[i].text}"`, answers[i].text, window));
+        for (let i = 0; i < answers.length; i++) {
+            await searchBing(`${q} + "${answers[i].text}"`, answers[i].text, window);
+            await searchGoogle(`${q} + "${answers[i].text}"`, answers[i].text, window);
+        }
     });
 };
