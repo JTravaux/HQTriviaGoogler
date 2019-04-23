@@ -89,14 +89,11 @@ searchBing = (q, answer, window) => {
 exports.answer = async (question) => {
     let answers = question.answers;
     let q = removeStopWords(escapeChars(question.question.toLowerCase()));
-    let window = await Chromium.launch({ headless: true, defaultViewport: null,  args: ['--no-sandbox', '--disable-setuid-sandbox'] });
-
-    // Loop through each of the answers...
-    console.log(`\x1b[35m${q}\x1b[0m`);
-    for (let i = 0; i < answers.length; i++) {
-        searchBing(`${q} + "${answers[i].text}"`, answers[i].text, window);
-        searchGoogle(`${q} + "${answers[i].text}"`, answers[i].text, window);
-        console.log();  
-    }
-
+    Chromium.launch({ headless: true, defaultViewport: null,  args: ['--no-sandbox', '--disable-setuid-sandbox'] }).then((window)=> {
+        console.log(`\x1b[35m${q}\x1b[0m`);
+        for (let i = 0; i < answers.length; i++) {
+            searchBing(`${q} + "${answers[i].text}"`, answers[i].text, window);
+            searchGoogle(`${q} + "${answers[i].text}"`, answers[i].text, window);
+        }
+    });
 };
