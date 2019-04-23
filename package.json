@@ -1,0 +1,19 @@
+{
+  "name": "hqmania",
+  "version": "1.0.0",
+  "description": "HQ Mania AI challenge",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.3",
+    "eventsource": "^1.0.7",
+    "google-search-scraper": "^0.1.0",
+    "https-proxy-agent": "^2.2.1",
+    "number-of-search-results": "^1.0.5",
+    "opener": "^1.5.1",
+    "puppeteer": "^1.14.0",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0",
+    "stopword": "^0.2.4",
+    "ws": "4.1.x"
+  }
+}
